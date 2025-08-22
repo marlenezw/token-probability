@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Token Probability Visualizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>LLM Token Probability Visualizer</h1>
+            <p>Hover over words to see their probability distributions</p>
+        </div>
+        
+        <div class="chat-container">
+            <div class="message user-message">
+                <div class="message-content">
+                    <span class="prompt-text">It's a lovely day at DjangoCon, let's go to the</span>
+                </div>
+            </div>
+            
+            <div class="message assistant-message">
+                <div class="message-content">
+                    <div id="response-text" class="response-text">
+                        <!-- Response will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="input-section">
+            <div class="config-section">
+                <div class="config-row">
+                    <div class="config-field">
+                        <label for="endpoint-input">Azure OpenAI Endpoint:</label>
+                        <input type="url" id="endpoint-input" placeholder="https://your-resource.openai.azure.com/" />
+                    </div>
+                    <div class="config-field">
+                        <label for="api-key-input">API Key:</label>
+                        <input type="password" id="api-key-input" placeholder="Enter your API key" />
+                    </div>
+                </div>
+            </div>
+            <div class="input-container">
+                <textarea id="prompt-input" placeholder="Enter your prompt here..." rows="3"></textarea>
+                <button id="generate-btn" onclick="generateResponse()">Generate</button>
+            </div>
+        </div>
+        
+        <!-- Tooltip for probability display -->
+        <div id="tooltip" class="tooltip">
+            <div class="tooltip-content">
+                <div class="tooltip-header">Token Probabilities</div>
+                <div id="tooltip-body"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
