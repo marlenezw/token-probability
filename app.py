@@ -39,7 +39,7 @@ def get_model_response(prompt: str, endpoint: str, api_key: str, top_k: int = 5,
     )
 
     completion = client.chat.completions.create(
-        model="gpt-4o-mini", **kwargs
+        model="openai/gpt-4o-mini", **kwargs
     )
 
     choice = completion.choices[0]
